@@ -15,4 +15,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.shrikanthravi.customnavigationdrawer2.widget.SNavigationDrawer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nagivation_drawer"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frame_layout"/>
+
+    </com.shrikanthravi.customnavigationdrawer2.widget.SNavigationDrawer>
 </androidx.constraintlayout.widget.ConstraintLayout>
