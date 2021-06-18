@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         menuItems.add(new MenuItem("Main", R.drawable.giwawa));
         menuItems.add(new MenuItem("Login", R.drawable.giwawa));
         menuItems.add(new MenuItem("Favorite", R.drawable.giwawa));
+        menuItems.add(new MenuItem("Personal", R.drawable.giwawa));
         sNavigationDrawer.setMenuItemList(menuItems);
-        sNavigationDrawer.setAppbarTitleTV("Weather Tracker");
+        sNavigationDrawer.setAppbarTitleTV("WBSE");
 
         aClass = MainFragment.class;
         openFragment();
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         aClass = FavoriteFragment.class;
+                        break;
+                    case 3:
+                        aClass = PersonalFragment.class;
                         break;
                 }
             }

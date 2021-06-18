@@ -23,7 +23,13 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/frame_layout"/>
+            android:id="@+id/frame_layout">
+
+        </FrameLayout>
+
+
 
     </com.shrikanthravi.customnavigationdrawer2.widget.SNavigationDrawer>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
