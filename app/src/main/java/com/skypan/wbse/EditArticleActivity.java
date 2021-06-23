@@ -1,23 +1,23 @@
 package com.skypan.wbse;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.skypan.wbse.retrofit.Ack;
+import com.skypan.wbse.retrofit.Article;
 import com.skypan.wbse.retrofit.RetrofitManager;
 import com.skypan.wbse.retrofit.RetrofitService;
-import com.skypan.wbse.retrofit.Article;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewArticleActivity extends AppCompatActivity {
+public class EditArticleActivity extends AppCompatActivity {
 
     private EditText title,content;
     private Article article =null;
@@ -38,7 +38,7 @@ public class NewArticleActivity extends AppCompatActivity {
 
                 //todo
                 RetrofitService retrofitService = RetrofitManager.getInstance().getService();
-                Call<Ack> call = retrofitService.newEvent(article);
+                Call<Ack> call = retrofitService.editActicle(article);
                 call.enqueue(new Callback<Ack>() {
                     @Override
                     public void onResponse(Call<Ack> call, Response<Ack> response) {
@@ -52,7 +52,7 @@ public class NewArticleActivity extends AppCompatActivity {
                 });
 
 
-                Intent intent = new Intent(NewArticleActivity.this, MainActivity.class);
+                Intent intent = new Intent(EditArticleActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -32,6 +32,23 @@ public class FavoriteFragment extends Fragment {
         rv_1.setLayoutManager(linearLayoutManager);
         rv_1.setAdapter(new cardAdapter(getActivity()));
 
+//        RetrofitService retrofitService = RetrofitManager.getInstance().getService();
+//        Call<List<Article>> call = retrofitService.lastArticle();
+//        //todo:
+//        call.enqueue(new Callback<List<Article>>() {
+//            @Override
+//            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
+//                if (!response.isSuccessful()) {
+//                    Toast.makeText(getActivity(), "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Article>> call, Throwable t) {
+//
+//            }
+//        });
+
         return root;
     }
 

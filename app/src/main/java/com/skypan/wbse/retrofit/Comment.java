@@ -1,11 +1,8 @@
 package com.skypan.wbse.retrofit;
 
-public class comment {
-    private String commentId,reviewerId,postTime,commentContent;
+public class Comment {
+    private String reviewerId,postTime,commentContent;
 
-    public void setCommentId(String commentId) {
-        this.commentId = commentId;
-    }
 
     public void setReviewerId(String reviewerId) {
         this.reviewerId = reviewerId;
@@ -17,10 +14,6 @@ public class comment {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
-    }
-
-    public String getCommentId() {
-        return commentId;
     }
 
     public String getReviewerId() {

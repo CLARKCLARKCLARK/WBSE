@@ -2,11 +2,11 @@ package com.skypan.wbse.retrofit;
 
 import java.util.List;
 
-public class article {
+public class Article {
     private String authorId,articleId,articleName,postTime,articleContent;
-    private List<comment> comments;
+    private List<Comment> comments;
 
-    public void setComments(List<comment> comments) { this.comments = comments; }
+    public void setComments(List<Comment> comments) { this.comments = comments; }
 
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
@@ -28,7 +28,7 @@ public class article {
         this.articleContent = articleContent;
     }
 
-    public List<comment> getComments() {return comments; }
+    public List<Comment> getComments() {return comments; }
 
     public String getAuthorId() {
         return authorId;

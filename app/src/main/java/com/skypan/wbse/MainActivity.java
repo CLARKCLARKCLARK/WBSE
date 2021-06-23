@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         menuItems.add(new MenuItem("Login", R.drawable.giwawa));
         menuItems.add(new MenuItem("Favorite", R.drawable.giwawa));
         menuItems.add(new MenuItem("Personal", R.drawable.giwawa));
+        menuItems.add(new MenuItem("Popular", R.drawable.giwawa));
         sNavigationDrawer.setMenuItemList(menuItems);
         sNavigationDrawer.setAppbarTitleTV("WBSE");
 
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         aClass = PersonalFragment.class;
+                        break;
+                    case 4:
+                        aClass = PopularlFragment.class;
                         break;
                 }
             }
