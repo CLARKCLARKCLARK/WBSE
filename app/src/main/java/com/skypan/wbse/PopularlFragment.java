@@ -38,27 +38,31 @@ public class PopularlFragment extends Fragment {
         RecyclerView rv_1 = root.findViewById(R.id.rv_1);
 
         RetrofitService retrofitService = RetrofitManager.getInstance().getService();
-        //todo:
-//        Call<List<Article>> call = retrofitService.popularArticle();
-//        call.enqueue(new Callback<List<Article>>() {
-//            @Override
-//            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
-//                if (!response.isSuccessful()) {
-//                    Toast.makeText(getActivity(), "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
-//                }
-//
-//
-//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-//                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//                rv_1.setLayoutManager(linearLayoutManager);
-//                rv_1.setAdapter(new cardAdapter(getActivity()));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Article>> call, Throwable t) {
-//
-//            }
-//        });
+
+        Call<List<Article>> call = retrofitService.popularArticle();
+        call.enqueue(new Callback<List<Article>>() {
+            @Override
+            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getActivity(), "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
+                }
+                List<Article> article = response.body();
+
+                System.out.println(article.get(0).getArticleContent());
+
+                //System.out.println(article.get(2).getArticleComments().get(0).toString());
+
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                rv_1.setLayoutManager(linearLayoutManager);
+                rv_1.setAdapter(new cardAdapter(getActivity(),article));
+            }
+
+            @Override
+            public void onFailure(Call<List<Article>> call, Throwable t) {
+
+            }
+        });
 
         return root;
     }

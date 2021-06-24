@@ -3,6 +3,7 @@ package com.skypan.wbse;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +11,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+import com.skypan.wbse.retrofit.Account;
 import com.skypan.wbse.retrofit.Ack;
+import com.skypan.wbse.retrofit.Response;
 import com.skypan.wbse.retrofit.RetrofitManager;
 import com.skypan.wbse.retrofit.RetrofitService;
+import com.skypan.wbse.retrofit.user;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -37,32 +47,39 @@ public class SignUpActivity extends AppCompatActivity {
         btnSendMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("FFFFFF");
                 String email_text = email.getEditText().getText().toString();
                 String password1 = password.getEditText().getText().toString();
                 String password2 = passwordAgain.getEditText().getText().toString();
                 if (password1.equals(password2)) {
+
+                    user user = new user();
+                    user.setUserId(email_text);
+                    user.setPassword(password1);
+
                     RetrofitService retrofitService = RetrofitManager.getInstance().getService();
-                    Call<Ack> call = retrofitService.signUp(email_text, password1);
-                    call.enqueue(new Callback<Ack>() {
+                    Call<Response> call = retrofitService.signUp(user);
+                    call.enqueue(new Callback<Response>() {
                         @Override
-                        public void onResponse(Call<Ack> call, Response<Ack> response) {
-                            if (!response.isSuccessful()) {
+                        public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                            if(!response.isSuccessful()){
                                 Toast.makeText(SignUpActivity.this, "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Ack ack = response.body();
-                                if (ack.getCode() == 200) {
-                                    Intent intent = new Intent(SignUpActivity.this, LoginFragment.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(SignUpActivity.this, "錯誤訊息: " + ack.getMsg(), Toast.LENGTH_SHORT).show();
-                                }
+                            }
+                            else{
+
+                                SharedPreferences sharedPreferences = getSharedPreferences("userId" , MODE_PRIVATE);
+                                sharedPreferences.edit().putString("Id" , email_text).apply();
+
+
+                                Toast.makeText(SignUpActivity.this, "請重新登入", Toast.LENGTH_SHORT).show();//去信箱收信
+                                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                startActivity(intent);
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<Ack> call, Throwable t) {
-                            Toast.makeText(SignUpActivity.this, "連線錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
+                        public void onFailure(Call<Response> call, Throwable t) {
+
                         }
                     });
                 } else {

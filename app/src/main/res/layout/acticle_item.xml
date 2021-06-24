@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="6dp"
     app:cardElevation="6dp"
-    android:id="@id/article_id"
+
     >
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/article_id"
+            android:id="@+id/author_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
@@ -85,8 +85,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="77dp"
             android:gravity="bottom"
-            android:text="刪除"
-            android:visibility="visible"/>
+            android:text="刪除"/>
 
         <Button
             android:id="@+id/article_edit"
@@ -97,8 +96,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="132dp"
             android:gravity="bottom"
-            android:text="修改"
-            android:visibility="visible" />
+            android:text="修改" />
 
 
     </RelativeLayout>

@@ -4,14 +4,14 @@ import java.util.List;
 
 public class FavRequest {
     private String userId ;
-    private List<String> articleId;
+    private String articleId;
 
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
 
-    public void setArticleId(List<String> userArticle) {
+    public void setArticleId(String userArticle) {
         this.articleId = userArticle;
     }
 
@@ -19,7 +19,7 @@ public class FavRequest {
         return userId;
     }
 
-    public List<String> getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 }

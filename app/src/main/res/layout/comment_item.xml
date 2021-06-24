@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="6dp"
     app:cardElevation="6dp"
-    android:id="@id/article_id">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"

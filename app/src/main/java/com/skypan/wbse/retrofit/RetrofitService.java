@@ -1,11 +1,13 @@
 package com.skypan.wbse.retrofit;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -14,38 +16,37 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitService {
-    @FormUrlEncoded
-    @POST("signIn")
-    Call<Ack> signIn(@Field("email") String email,
-                     @Field("password") String password);
 
-    @FormUrlEncoded
+    //gg
+    @POST("signIn")
+    Call<Response> signIn(@Body user e);
+//gg
     @POST("signUp")
-    Call<Ack> signUp(@Field("email") String email,
-                     @Field("password") String password);
+    Call<Response> signUp(@Body user e);
+
 
     @POST("newArticle")
     Call<Ack> newEvent(@Body Article e);
 
-    @DELETE("deleteActicle/{articleId}")
+    @DELETE("deleteArticle/{articleId}")
     Call<Ack> deleteEvent(@Path("articleId") String articleId);
 
 
-    @PUT("editActicle")
-    Call<Ack> editActicle(@Body Article e);
+    @PUT("editArticle")
+    Call<Ack> editArticle(@Body ReplaceArticleRequest e);
 
 
     @POST("{articleId}/newComment")
     Call<Ack> newComment(@Body CommentRequest e, @Path("articleId") String articleId);
 
 
-    @GET("userArticle")
-    Call<List<Article>> userArticle(@Query("userId") String userId);
+    @GET("userArticles/{id}")
+    Call<List<Article>> userArticle( @Path("id") String id);
 
-    @GET("lastArticle")
+    @GET("searchNewArticles")
     Call<List<Article>> lastArticle();
 
-    @GET("popularArticle")
+    @GET("searchHotArticles")
     Call<List<Article>> popularArticle();
 
     @GET("FavRequest/{userId}")
@@ -54,8 +55,7 @@ public interface RetrofitService {
 
     @FormUrlEncoded
     @POST("newFavorite")
-    Call<Ack> newFavorite(@Field("userId") String userId,
-                     @Field("articleId") String articleId);
+    Call<Ack> newFavorite(@Body FavRequest e);
 
     @FormUrlEncoded
     @POST("removeFavorite")

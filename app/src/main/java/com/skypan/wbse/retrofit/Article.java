@@ -1,12 +1,14 @@
 package com.skypan.wbse.retrofit;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Article {
     private String authorId,articleId,articleName,postTime,articleContent;
-    private List<Comment> comments;
+    private ArrayList<articleComment> articleComments;
 
-    public void setComments(List<Comment> comments) { this.comments = comments; }
+
+
+    public void setArticleComments(ArrayList<articleComment> articleComments) { this.articleComments = articleComments; }
 
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
@@ -28,7 +30,7 @@ public class Article {
         this.articleContent = articleContent;
     }
 
-    public List<Comment> getComments() {return comments; }
+    public ArrayList<articleComment> getArticleComments() {return articleComments; }
 
     public String getAuthorId() {
         return authorId;
@@ -48,5 +50,12 @@ public class Article {
 
     public String getArticleContent() {
         return articleContent;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                authorId+articleId+articleName+postTime+articleContent+
+                '}';
     }
 }
