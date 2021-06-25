@@ -57,7 +57,7 @@ public class cardAdapter extends RecyclerView.Adapter<cardAdapter.viewHolder> {
 
         SharedPreferences sharedPreferences = mContext.getSharedPreferences("userId" , MODE_PRIVATE);
         String id = sharedPreferences.getString("Id" ,"");
-        System.out.println(article.get(position).getAuthorId() + " " + id);
+        System.out.println(article.get(position).getAuthorId() + "555" + id);
         if(!article.get(position).getAuthorId().equals(id)){
             holder.edit.setVisibility(View.GONE);
             holder.delete.setVisibility(View.GONE);
@@ -77,8 +77,8 @@ public class cardAdapter extends RecyclerView.Adapter<cardAdapter.viewHolder> {
     class viewHolder extends RecyclerView.ViewHolder {
 
         private CardView cardView;
-        private Button comment,delete,edit;
-        private ImageView favorite;
+        private Button comment,delete,edit,favorite;
+
         private TextView title,author,date,content;
 
         public viewHolder(@NonNull View itemView) {
@@ -99,27 +99,32 @@ public class cardAdapter extends RecyclerView.Adapter<cardAdapter.viewHolder> {
                     final int position = getAdapterPosition();
                     SharedPreferences sharedPreferences = mContext.getSharedPreferences("userId" , MODE_PRIVATE);
                     String id = sharedPreferences.getString("Id" ,"");
-                    FavRequest favRequest = new FavRequest();
-                    favRequest.setArticleId(article.get(position).getArticleId().toString());
-                    favRequest.setUserId(id);
-                    RetrofitService retrofitService = RetrofitManager.getInstance().getService();
-                    Call<Ack> call = retrofitService.newFavorite(favRequest);
-                    call.enqueue(new Callback<Ack>() {
-                        @Override
-                        public void onResponse(Call<Ack> call, Response<Ack> response) {
-                            if(!response.isSuccessful()){
-                                Toast.makeText(mContext, "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
+                    if (id==""){
+                        Toast.makeText(mContext, "login PLZ", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        FavRequest favRequest = new FavRequest();
+                        favRequest.setArticleId(article.get(position).getArticleId());
+                        favRequest.setUserId(id);
+                        System.out.println(article.get(position).getArticleId() + "32323" + id);
+                        RetrofitService retrofitService = RetrofitManager.getInstance().getService();
+                        Call<Ack> call = retrofitService.newFavorite(favRequest);
+                        call.enqueue(new Callback<Ack>() {
+                            @Override
+                            public void onResponse(Call<Ack> call, Response<Ack> response) {
+                                if (!response.isSuccessful()) {
+                                    Toast.makeText(mContext, "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(mContext, "favorite success", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                            else{
-                                Toast.makeText(mContext, "favorite success", Toast.LENGTH_SHORT).show();
+
+                            @Override
+                            public void onFailure(Call<Ack> call, Throwable t) {
+
                             }
-                        }
-
-                        @Override
-                        public void onFailure(Call<Ack> call, Throwable t) {
-
-                        }
-                    });
+                        });
+                    }
                 }
             });
 
@@ -178,7 +183,7 @@ public class cardAdapter extends RecyclerView.Adapter<cardAdapter.viewHolder> {
                     public void onClick(View v) {
 
                         final int position = getAdapterPosition();
-                        System.out.println(position);
+                        System.out.println("123"+position);
                         RetrofitService retrofitService = RetrofitManager.getInstance().getService();
                         Call<Ack> call = retrofitService.deleteEvent(article.get(position).getArticleId());
                         call.enqueue(new Callback<Ack>() {

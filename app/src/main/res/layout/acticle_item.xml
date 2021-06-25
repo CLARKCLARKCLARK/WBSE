@@ -29,11 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="62dp"
-            android:layout_marginTop="-40dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="47dp"
             android:padding="10dp"
             android:text="articleid"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/article_date"
@@ -41,51 +41,44 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="-40dp"
+            android:layout_marginStart="117dp"
+            android:layout_marginTop="49dp"
             android:padding="10dp"
             android:text="articledate"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
             android:padding="10dp"
             android:text="article"
-            android:textSize="12sp" />
+            android:textSize="20dp" />
 
-        <ImageView
+        <Button
             android:id="@+id/article_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:padding="10dp"
-            android:src="@drawable/ic_baseline_favorite_24"
-            android:textSize="25sp" />
+            android:text="favotite"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/article_comment"
             android:layout_width="75dp"
             android:layout_height="40dp"
             android:layout_below="@+id/article"
-            android:text="評論區"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="4dp"
-            android:gravity="bottom" />
-
-        <Button
-            android:id="@+id/article_delete"
-            android:layout_width="55dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/article"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="77dp"
+            android:layout_marginTop="-57dp"
+            android:layout_marginEnd="123dp"
             android:gravity="bottom"
-            android:text="刪除"/>
+            android:text="評論區"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/article_edit"
@@ -93,10 +86,21 @@
             android:layout_height="40dp"
             android:layout_below="@+id/article"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="132dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="55dp"
             android:gravity="bottom"
             android:text="修改" />
+
+        <Button
+            android:id="@+id/article_delete"
+            android:layout_width="55dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/article"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="-1dp"
+            android:gravity="bottom"
+            android:text="刪除" />
 
 
     </RelativeLayout>

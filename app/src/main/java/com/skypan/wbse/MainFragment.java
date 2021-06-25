@@ -50,10 +50,10 @@ public class MainFragment extends Fragment {
                     Toast.makeText(getContext(), "伺服器錯誤，請稍後再試", Toast.LENGTH_SHORT).show();
                 }
                 List<Article> article = response.body();
-                //article.get(2).getArticleComments().get(0).getCommentContent();
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 rv_1.setLayoutManager(linearLayoutManager);
+                System.out.println(article.get(0).toString());
                 rv_1.setAdapter(new cardAdapter(getActivity(), article));
             }
 

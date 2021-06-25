@@ -49,11 +49,10 @@ public interface RetrofitService {
     @GET("searchHotArticles")
     Call<List<Article>> popularArticle();
 
-    @GET("FavRequest/{userId}")
+    @GET("favorite/{userId}")
     Call<List<Article>> favorite(@Path("userId") String userId);
 
 
-    @FormUrlEncoded
     @POST("newFavorite")
     Call<Ack> newFavorite(@Body FavRequest e);
 
